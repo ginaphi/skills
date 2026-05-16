@@ -1,0 +1,14 @@
+node_modules/
+.DS_Store
+*.log
+.env
+.env.local
+
+# Personal workspace tooling — local-only, never pushed to GitHub.
+# Each agentic-coding contributor is free to set up their own setup
+# however they like, in any agent of their choice. We do not prescribe
+# the workflow.
+CLAUDE.md
+CONTEXT.md
+.claude/
+docs/
