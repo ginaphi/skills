@@ -51,6 +51,8 @@ Always-on regardless of what changed. Catches "the app is completely broken" tie
 1. **App loads.** Navigate to `APP_URL`. Verify no blank page, no 5xx, no pre-interaction console error.
 2. **Zero console errors.** On the landing page, verify zero `error`-level console messages (warnings OK). This is the catch-all for "page loads but crashes on render" — missing imports, failed API calls, runtime exceptions.
 
+**If the app is auth-gated** (you land on a sign-in screen), don't assume the login shape. Discover it: read the app's auth routes/components, or take an accessibility snapshot of the sign-in page and target the actual fields. Sign in with dev/test credentials, then run the baseline against the landed page. Note the auth flow you used so the check is reproducible.
+
 ## Step 2 — Build the session-derived plan
 
 Read these signals in order:
