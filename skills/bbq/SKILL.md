@@ -44,9 +44,11 @@ A decision is **recorded** if a file change captures it (a new glossary term, a 
 ```bash
 DATE=$(date +%Y-%m-%d)
 TIME=$(date +%H:%M)              # real clock time — never estimate
+EXISTING=$(ls docs/session/[0-9][0-9]-*.md 2>/dev/null | sed 's|.*/||' | grep -oE '^[0-9]+' | sort -n | head -1 | sed 's/^0*/')
+PREFIX=$(printf "%02d" $(( ${EXISTING:-100} - 1 )))
 SLUG="<kebab-from-session-topic>"
 mkdir -p docs/session
-FILE="docs/session/${DATE}-bbq-${SLUG}.md"
+FILE="docs/session/${PREFIX}-bbq-${SLUG}.md"
 ```
 
 Write `$FILE` using this shape (see [REFERENCE.md](REFERENCE.md) for the frontmatter contract + the Mermaid fork-diagram convention):
